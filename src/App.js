@@ -1,14 +1,12 @@
-function App() {
+import React from 'react';
+import Headers from './Headers';
+
+
+function App (props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Calculo de piso e revestimento
-        </p>
-       
-      </header>
+    <div>
+    <Headers />
     </div>
   );
-}
-
+};
 export default App;
