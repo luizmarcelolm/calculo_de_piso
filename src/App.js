@@ -1,6 +1,5 @@
 import React from 'react';
-import Headers from './Headers';
-
+import Headers from './Headers/Headers';
 
 function App (props) {
   return (

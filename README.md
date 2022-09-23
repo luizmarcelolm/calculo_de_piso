@@ -1,6 +1,5 @@
 <<<<<<< HEAD
-[] - criar tema bootstrap
-[] - definir inputs para calculo
+[x] - criar tema bootstrap
 [] - fazer calculo e exibir
 [] - criar containers para cada calculo
 [] - excluir container
