@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {Fragment, useState} from 'react';
 import '../Headers/Headers.css';
 
 
@@ -7,44 +7,35 @@ function Headers() {
 
   const [form, setForm] = useState("");
 
-  //função que armazena informações digitadas
-  function handleChange(event) {
-   
-    setForm({ ...form, [event.target.name]: event.target.value });
-  }
+  var checked_gender = document.querySelector('input[name = "soma"]:checked');
+
+  let [lista, setLista] = useState ([]);
+  let [novoItem, setNovoItem] = useState("");
 
 
-  //função para enviar
-  function handleSubmit(event) {
-        
-            //validação dos input
-            if (form.input_1 > 0 && form.input_2 > 0 ){
-                const calc = (form.input_1) + (form.input_2);
-                console.log(parseInt(calc));
-                  return alert("deu certo");                  
-            }  
-    }
       return (
-      <form onSubmit={handleSubmit}>
+      <Fragment>
         <div className="app">
           <h2>CALCULADORA DE PISO</h2>
-          <div className="search">
+          <div>
 
             <input className='local'
+              value={novoItem} onChange = {value => setNovoItem(value.target.value)}
               placeholder='Local'
-              type="local" /><br></br><br></br>
+              maxLength={10}
+              type="text" /><br></br><br></br>
 
             <input className='input'
-              placeholder='Medida 1'
               onChange={handleChange}
+              placeholder='Medida 1'
               type="number"
               name="input_1" />
 
               <label>  X  </label>
 
               <input className='input'
-              placeholder='Medida 2'
               onChange={handleChange}
+              placeholder='Medida 2'
               type="number"
               name="input_2" /><br></br><br></br>
 
@@ -53,20 +44,53 @@ function Headers() {
               </div> <br></br>
 
               <button 
+                onClick={()=> adicionarNovoItem()}
                 className="btn">
                 CALCULAR
               </button>
             
           </div>
-          <div className='container_info_fora'>
-              <div className="container">
-                      
-                  
-              </div>
-            </div>
+            <div className='container_info_fora'>
+               <div className='container'>
+                  <ul className='lista'>
+                    {lista.map((item, index) => (
+                      <li key={index} className='item'>
+                        {item}
+                        <button onClick = {() => deletarItem(index)}>
+                          <label className='deletar'>X</label>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>  
+               </div>
+            </div>   
         </div>
-      </form>  
+      </Fragment>  
       );
+
+      function adicionarNovoItem () {
+        if (checked_gender !== null){
+        console.log("com 10 %")
+        const calc = (form.input_1 * form.input_2);
+        setLista ([(novoItem)+(" ")+(form.input_1)+("")+("X")+(form.input_2)+("=")+(calc.toFixed(2))+("mts²"),...lista]);
+        setNovoItem("");
+        }else{
+       const calc = (form.input_1 - form.input_2);
+        setLista ([(novoItem)+(" ")+(form.input_1)+("")+("X")+(form.input_2)+("=")+(calc.toFixed(2))+("mts²"),...lista]);
+        setNovoItem("");
+        console.log("sem 10 %")
+      }
+      }
+
+      function deletarItem (index) {
+        let tempArray = [...lista];
+        tempArray.splice(index, 1);
+        setLista(tempArray);
+      }
+
+      function handleChange(e) {
+        setForm({ ...form, [e.target.name]: e.target.value });
+      }
 
 }
 

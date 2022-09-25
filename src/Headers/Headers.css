@@ -11,24 +11,40 @@ body {
 }
 
 .container{
+  font-size: 15px;
+  font-weight: bold;
   padding: 10px;
   border: 1px solid white;
-  max-width: 220px;
-  min-width: 220px;
-  max-height: 230px;
-  min-height: 230px;
+  width: 320px;
+  height: auto;
   border-radius: 10px;
 }
 
+.deletar{
+  color: red;
+}
+
 .container_info_fora{
-  padding: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
 }
 
+.lista{
+ list-style: none;
+ padding: 5px;
+}
+
+.item{
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .input{
-  text-align: center;
-  padding: 3px;
+    text-align: center;
+    padding: 3px;
     max-width: 80px;
     min-height: 24px;
     border-radius: 5px;
@@ -37,7 +53,7 @@ body {
 }
 
 .local{
-  text-align: center;
+    text-align: center;
     padding: 3px;
     max-width: 300px;
     min-height: 24px;
