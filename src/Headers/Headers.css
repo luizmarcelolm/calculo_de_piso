@@ -87,4 +87,11 @@ body {
   border-color:black !important;
   color:black !important;
 }
+.info{
+  color:white !important;
+}
+
+label{
+  color:white;
+}
  
